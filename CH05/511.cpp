@@ -35,7 +35,7 @@ int main()
 double f(double x, double c, unsigned n)
 {
   double next;
-  for (int i = 0; i < n; i++){
+  for (unsigned i = 0; i < n; i++){
     next = c * x * (1 - x);
     x = next;
   }

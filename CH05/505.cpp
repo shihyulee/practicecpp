@@ -49,7 +49,7 @@ double root(double x1, double x2, double f1, double f2)
     cout << "WARNING: maxium limit of " << max_depth << " bisections reached" << endl;
     estimated_root = x_mid;
   }
-  else {
+  else {// most common case comes always first
     double f_mid = f(x_mid);
     if (f_mid == 0.0){
       estimated_root = x_mid;

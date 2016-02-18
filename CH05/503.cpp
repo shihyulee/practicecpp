@@ -16,20 +16,26 @@ int main() {
   cout << "Please choose the unit that you input, c or f?" << endl;
   cin >> unit;
   if (unit == 'c')
+    
+    //check for impossible anguments 
+    
     cout << temp << " degree C = " << CtoF(temp)<< " degree F."<< endl;
   else if (unit == 'f')
+    
+    //check for impossible anguments 
+    
     cout << temp << " degree F = " << FtoC(temp)<< " degree C." << endl;
   else
     cout << "Wrong unit!" << endl;
   return 1;
 }
 
-float CtoF(float n)
+float CtoF(float T)
 { 
-  return (n * (9.0 / 5.0) + 32.0);  
+  return (T * (9.0f / 5.0f) + 32.0f);  
 }
 
-float FtoC(float n)
+float FtoC(float T)
 { 
-  return ((n - 32.0) * 5.0/9.0);  
+  return ((T - 32.0f) * 5.0f/9.0f);  
 }
