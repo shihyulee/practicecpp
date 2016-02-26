@@ -15,16 +15,23 @@ int main() {
   cin >> temp;
   cout << "Please choose the unit that you input, c or f?" << endl;
   cin >> unit;
-  if (unit == 'c')
+  if (unit == 'c'){
+    if (temp > -273.15){
+      cout << temp << " degree C = " << CtoF(temp)<< " degree F."<< endl;
+    }
+    else{
+      cout << " ERROR. The input under absolute zero." << endl;
+    }
+  } 
     
-    //check for impossible anguments 
-    
-    cout << temp << " degree C = " << CtoF(temp)<< " degree F."<< endl;
-  else if (unit == 'f')
-    
-    //check for impossible anguments 
-    
-    cout << temp << " degree F = " << FtoC(temp)<< " degree C." << endl;
+  else if (unit == 'f'){
+    if (temp > -459.67){
+      cout << temp << " degree F = " << FtoC(temp)<< " degree C." << endl;
+    }
+    else{
+      cout << " ERROR. The input under absolute zero." << endl;
+    }
+  }
   else
     cout << "Wrong unit!" << endl;
   return 1;
