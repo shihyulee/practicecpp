@@ -9,17 +9,17 @@ int main()
 {
   int p[4][4];
   for(int i = 0; i < 4; ++i){
-    for (int j = 0; j < 4 ;++j)
-    {
-      cin >> p[i][j];
+    for (int j = 0; j < 4 ;++j){
+      p[i][j]=(i+1)*(j*3)+(2*i+j);
     }
   }
-  cout << "P= " << p[0][0] ;
-  for(int i = 1; i < 4; ++i){
-    for (int j = 1; j < 4 ;++j)
-    {
-      cout << " + " << p[i][j] << "*" << "x^" << i << "*" << "y^" << j;
+  cout << "P = ";
+  for(int i = 0; i < 4; ++i){
+    for (int j = 0; j < 4 ;++j) {
+      cout << p[i][j] << "*" << "x^" << i << "*" << "y^" << j;
+      if( j < 3 ) std::cout << " + ";
     }
+    if( i < 3 ) std::cout << " + ";
   }
   cout << endl;
 

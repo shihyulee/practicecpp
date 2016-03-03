@@ -9,46 +9,49 @@ using namespace std;
 
 int main()
 {
-  const int max_data = 100;
-  int num;
-  double data;
-  double x[max_data];
-  double sum;
-  double mean;
-
+  
+  double *x;
+    
   srand(time(0));
 
-  cout << "Put the data number: " << endl;
+  cout << "Set the number of data : " << endl;
+  int num;
   cin >> num;
-
-  // store data to array
-  if ( num <= 100 && num > 0) {
-    for (int i = 0; i < num; ++i){
-      data = rand()%100 /100.0;
-      x[i] = data;
-      sum += data;
-      cout << x[i] << " ";
-    }
-    cout << endl;
-  }
-  else
-  {
+  
+  if ( num < 1) {
     cout << " Error input! " << endl;
     exit(EXIT_FAILURE);
   }
+  else {
+    x = new double [num];
+  }
+  
+  double sum = 0.;
+  
+  // store data to array
+  for (int i = 0; i < num; ++i){
+    x[i] = static_cast < double > ( rand() )/ RAND_MAX ;
+    sum += x[i];
+    cout << x[i] << " ";
+  }
+  cout << endl;
+  
   // Calculate Mean
-  mean = sum / num;
+  double mean = sum / num;
   cout << "mean: " << mean << endl;
 
   // Calculate Variance and standard deviation
-  double var, sd;
+  double var = 0.;
   for (int i = 0; i < num; ++i){
     var += (mean - x[i]) * (mean - x[i]);
   }
   var = var / (num - 1);
-  sd = sqrt(var);
+  double sd = sqrt(var);
   cout << "Variance: " << var << endl;
   cout << "Standard Deviation: " <<sd << endl;
 
+  delete [] x;
+  
   return(EXIT_SUCCESS);
+  
 }
