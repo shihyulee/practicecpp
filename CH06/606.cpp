@@ -16,6 +16,7 @@ int main()
       for (int k = 0; k < 4; ++k){
         cout << *(&a[0][0][0] + 3 * 4 * i + 4 * j + k) << "\t";
       }
+      cout << endl;
     }
     cout << endl;
   }
