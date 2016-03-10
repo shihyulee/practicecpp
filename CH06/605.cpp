@@ -14,7 +14,7 @@ int main()
       for (int k = 0; k < 4; ++k){
         for (int l = 0; l < 4; ++l){
           for (int m = 0; m < 4; ++m){
-            data[i][j][j][l][m] = i + j +k + l + m;
+            data[i][j][k][l][m] = i + j + k + l + m;
           }
         }
       }
@@ -29,7 +29,7 @@ int main()
       for (int k = 0; k < 4; ++k){
         for (int l = 0; l < 4; ++l){
           for (int m = 0; m < 4; ++m){
-            sum += data[i][j][j][l][m];
+            sum += data[i][j][k][l][m];
           }
         }
       }
@@ -50,7 +50,7 @@ int main()
       for (int k = 0; k < 4; ++k){
         for (int l = 0; l < 4; ++l){
           for (int m = 0; m < 4; ++m){
-            sum2 += *(&data[0][0][0][0][0] + 4 * 4 * 4 * 4 * i + 4 * 4 * 4 * j + 4 * 4 * k + 4 * i + m);
+            sum2 += *(data[0][0][0][0] + 4 * 4 * 4 * 4 * i + 4 * 4 * 4 * j + 4 * 4 * k + 4 * i + m);
           }
         }
       }
@@ -59,7 +59,7 @@ int main()
   average2 = sum2 / (4 * 4 * 4 * 4 * 4);
   clock_t stop_time2 = clock();
 
-  cout << average << endl;
+  cout << average2 << endl;
   cout << "Time taken of the SECOND version = " << static_cast<float> (stop_time2 - start_time2) / CLOCKS_PER_SEC << " secs. " << endl;
 
   return(EXIT_SUCCESS);

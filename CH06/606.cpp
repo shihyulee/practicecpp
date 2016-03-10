@@ -14,8 +14,9 @@ int main()
   for (int i = 0; i < 2; ++i){
     for (int j = 0; j < 3; ++j){
       for (int k = 0; k < 4; ++k){
-        cout << *(&a[0][0][0] + 3 * 4 * i + 4 * j + k) << "\t";
+        cout << *(**a + 3 * 4 * i + 4 * j + k) << "\t";
       }
+      
       cout << endl;
     }
     cout << endl;

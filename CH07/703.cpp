@@ -40,7 +40,7 @@ void bubble_sort(int *pt_data, int elements, void (order)(int*))
 void order_ints(int *pt)
 {
   int temp;
-  if (pt[0] > pt[1] > 0) {
+  if (pt[0] - pt[1] > 0) {
     temp = pt[0];
     pt[0] = pt[1];
     pt[1] = temp;

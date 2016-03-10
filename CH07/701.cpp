@@ -81,14 +81,21 @@ int main(int argc, char *argv[])
   double *pt_a = create_matrix(rows, columns_k);
   double *pt_b = create_matrix(rows_k, columns);
   double *pt_c = create_matrix(rows, columns);
+  
+  double **A = new double * [rows];
+  for(int i = 0; i < rows; i++){
+    A[i] = pt_a + i * columns_k;
+  }
+  
 
   //Fill matrices;
   for (int i = 1; i <= rows; ++i){
     for (int j = 1; j <= columns_k; ++j){
-      element(pt_a, columns_k, i, j) = i * (j + 1);
+      //element(pt_a, columns_k, i, j) = i * (j + 1);
+      A[i-1][j-1]= i * (j + 1);
     }
   }
-
+  
   for (int i = 1; i <= rows_k; ++i){
     for (int j = 1; j <= columns; ++j){
       element(pt_b, columns, i, j) = (i + 1) * (j + 1);
@@ -106,6 +113,12 @@ int main(int argc, char *argv[])
   //Print results:
   cout << "Result of multipling matrices:" << endl;
   print_matrix(pt_c, rows, columns);
-
+  
+  delete [] pt_a;
+  delete [] pt_b;
+  delete [] pt_c;
+  
+  delete [] A;
+  
   return(EXIT_SUCCESS);
 }

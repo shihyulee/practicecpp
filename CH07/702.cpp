@@ -19,9 +19,11 @@ int main(int argc, char *argv[])
   exit(EXIT_FAILURE);
   }
   // Dynamically allocates matrix A
+  
+  int * pt_a_memory = new int [rows*columns];
   int **pt_a = new int*[rows];
   for (int i = 0; i < rows; ++i){
-      pt_a[i] = new int[columns];
+      pt_a[i] = pt_a_memory + i *columns;
   }
   // Dynamically allocates matrix B
   int **pt_b = new int*[columns];
@@ -62,9 +64,8 @@ int main(int argc, char *argv[])
   }
   cout << endl;
 
-  for (int i = 0; i < rows; ++i){
-    delete[] pt_a[i];
-  }
+  
+  delete[] pt_a_memory;
   delete[] pt_a;
 
   for (int i = 0; i < columns; ++i){
