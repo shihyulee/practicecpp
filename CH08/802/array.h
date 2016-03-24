@@ -11,6 +11,9 @@ class array {
 public:
   array(int size);
   array(const array &s);
+  ~array(){
+    delete [] pt;
+  }
   int get_size(void);
   double &element(int i);
   static int number_of_arrays(void);

@@ -12,7 +12,7 @@ void list_words(char **pt_words, int words);
 void words_to_lower_case(char **pt_words, int words);
 void word_to_lower_case(char *word);
 void bubble_sort(char **pt_data, int elements, void (*order)(char**));
-void order_strings(char **pt);
+bool order_strings(char **pt);
 
 void get_words(char **pt_words, int words)
 {
@@ -46,27 +46,35 @@ void word_to_lower_case(char *pt)
   }
 }
 
-void bubble_sort(char **pt_data, int elements, void (*order)(char**))
+void bubble_sort(char **pt_data, int elements, bool (*order)(char**))
 {
   int n = elements - 1;
-  bool sorted = true;
+  bool sorted;
+  unsigned counter = 0;
   for (int i = 0; i < n; ++i){
+    sorted = false;
     for (int j = n; j > i; --j){
-      order(pt_data + j - 1);
-      sorted = false;
+      sorted += order(pt_data + j - 1);
     }
+    counter++;
+    if( sorted == false ) break;
   }
-  if (sorted) return;
+  
+  std::cout<< "number of i iteration = " << counter<<std::endl;
+   
 }
 
-void order_strings(char **pt)
+bool order_strings(char **pt)
 {
+  bool sorted = false;
   char *temp;
   if (strcmp(pt[0], pt[1]) > 0) {
     temp = pt[0];
     pt[0] = pt[1];
     pt[1] = temp;
+    sorted = true;
   }
+  return sorted;
 }
 
 int main(int argc, char *argv[])
@@ -91,6 +99,10 @@ int main(int argc, char *argv[])
   list_words(pt_words, words);
 
   bubble_sort(pt_words, words, order_strings);
+  
+  bubble_sort(pt_words, words, order_strings);
+  
+  
   cout << "\nOrdered lower case list:" << endl;
   list_words(pt_words, words);
 

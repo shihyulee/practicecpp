@@ -10,7 +10,6 @@ array::array(int size)
   elements = size;
   pt = new double[elements];
   ++total;
-  delete[] pt;
 }
 
 array::array(const array &s)
@@ -18,7 +17,10 @@ array::array(const array &s)
   elements = s.size;
   pt = new double[elements];
   ++total;
-  delete[] pt;
+  
+  for(int i=0; i<elements; i++){
+    pt[i] = s.pt[i];
+  }
 }
 
 int array::number_of_arrays(void)

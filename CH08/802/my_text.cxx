@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-  int array_size = 20;
+  int array_size = 200;
 
   // Define an object:
   array x(array_size);
@@ -44,7 +44,8 @@ int main()
     cout << p->element(i) << endl;
 
 // Try to go outside of the array bounds:
-  p->element(array_size + 1) = 3.142;
+  //p->element(array_size + 1) = 3.142;
 
   return(EXIT_SUCCESS);
+  
 }
