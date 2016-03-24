@@ -1,4 +1,4 @@
-// An Alphabetic Sort
+// An Alphabetic Sort: Modify  section 7.8.2
 
 #include <iostream>
 #include <cstdlib>
@@ -49,11 +49,14 @@ void word_to_lower_case(char *pt)
 void bubble_sort(char **pt_data, int elements, void (*order)(char**))
 {
   int n = elements - 1;
+  bool sorted = true;
   for (int i = 0; i < n; ++i){
     for (int j = n; j > i; --j){
       order(pt_data + j - 1);
+      sorted = false;
     }
   }
+  if (sorted) return;
 }
 
 void order_strings(char **pt)
