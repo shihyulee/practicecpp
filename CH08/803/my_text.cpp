@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "array.h"
+#include "array.hpp"
 using namespace std;
 
 int main()

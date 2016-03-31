@@ -1,6 +1,6 @@
 // use: Implements array class
 
-#include "array.h"
+#include "array.hpp"
 
 int array::total = 0; //Included to demonstrate technique.
                       // (Default is 0)
