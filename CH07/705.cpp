@@ -1,58 +1,69 @@
+// An Alphabetic Sort: Modify  section 7.8.2
+
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
 #include <cctype>
+#include <fstream>
 using namespace std;
 
-void bubble_sort(char *pt_data, int elements, void (order)(char*));
-void order_strings(char *pt);
+// Function declarations:
+void list_words(char **pt_words, int words);
 
-void bubble_sort(char *pt_data, int elements, void (order)(char*))
+void list_words(char **pt_words, int words)
 {
-  int n = elements - 1;
-  for (int i = 0; i < n; ++i)
-    for (int j = n; j > i; --j)
-      order(pt_data + j - 1);
+  cout << endl;
+  for (int i = 0; i < words; ++i)
+    cout << pt_words[i] << endl;
 }
 
-void order_strings(char *pt)
-{
-  char temp;
-  if (pt[0] > pt[1]) {
-    temp = pt[0];
-    pt[0] = pt[1];
-    pt[1] = temp;
-  }
-}
 
 int main(int argc, char *argv[])
 {
   if (argc != 2){
-    cout << "Usage: my_sort <words>" << endl;
+    cout << "Usage: my_sort <number of words>" << endl;
     exit(EXIT_FAILURE);
   }
-
   char *word = argv[1];
-
-  //counting the length of word
-  int Len = strlen(word);
-
-  char *pt_word = new char [Len];
-
-  cout << "The original lower alphabets list: " << endl;
-  for( int i = 0; i < Len; ++i)
+  char *filewords[] = {"This", "is", "a", "test", "text"};
+  cout << *filewords[2] << endl;
+  cout << "\nOriginal list:" << endl;
+  int num = strlen(*filewords);
+  list_words(filewords, num);
+  int count = 0;
+  for (int i = 0; i < num; ++i)
   {
-    pt_word[i] = *(word+i);
-    pt_word[i] = tolower(pt_word[i]);
-    cout << pt_word[i] << endl;
+    if (*filewords[i] == *word){
+      count++;
+    }
   }
+  cout << endl << count << " OCCURRENCES OF " << word << endl << endl;
+/*
+  char buffer[200];
+  fstream file;
+  file.open("test.txt",ios::in);
+  if(!file){
+      cout << "The file is not exist!" << endl<< endl;
+      exit(EXIT_FAILURE);
+  }
+  else{
+    while(file.getline(buffer, sizeof(buffer), ' ')){
+      cout << buffer << endl;
+    }
+    cout << buffer[2]<< endl;
+    file.close();
+  }
+*/
 
-  cout << "Ordered lower alphabets list: " << endl;
-  bubble_sort(pt_word, Len, order_strings);
-  for( int i = 0; i < Len; ++i)
-  {
-    cout << pt_word[i] << endl;
-  }
+//   char **pt_words = new char *[words];
+//
+//   get_words(pt_words, words);
+//   cout << "\nOriginal list:" << endl;
+//   list_words(pt_words, words);
+//
+//   words_to_lower_case(pt_words, words);
+//   cout << "\nLower case list:" << endl;
+//   list_words(pt_words, words);
 
   return(EXIT_SUCCESS);
 }
