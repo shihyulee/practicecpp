@@ -5,25 +5,23 @@
 int Array::_total = 0; //Included to demonstrate technique.
                       // (Default is 0)
 
-Array::Array(int size1, int size2)
+Array::Array(int size)
 {
-  _elements = size1 * size2;
-  _size1 = size1;
-  _size2 = size2;
+  _elements = size;
   pt = new double[_elements];
-
   ++_total;
 }
 
-Array::Array(const Array &s)
+Array &Array::operator[](const Array &s)
 {
-  _elements = s._size1 * s._size2;
+  _elements = s._size;
   pt = new double[_elements];
   ++_total;
 
-  for(int i = 0; i < _elements; i++){
+  for(int i=0; i < _elements; i++){
     pt[i] = s.pt[i];
   }
+  return *this;
 }
 
 int Array::NumberOfArrays(void)
