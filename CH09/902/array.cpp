@@ -12,7 +12,7 @@ Array::Array(int size)
   ++_total;
 }
 
-Array &Array::operator[](const Array &s)
+Array &Array::operator=(const Array &s)
 {
   _elements = s._size;
   pt = new double[_elements];
@@ -23,6 +23,20 @@ Array &Array::operator[](const Array &s)
   }
   return *this;
 }
+
+Array &Array::operator+=(const Array &s)
+{
+  if (_elements != s._elements){
+    std::cout << "Error, you tried to add arraies with different size"<<std::endl;
+    abort();
+  }
+
+  for(int i=0; i < _elements; i++){
+    pt[i] += s.pt[i];
+  }
+  return *this;
+}
+
 
 int Array::NumberOfArrays(void)
 {

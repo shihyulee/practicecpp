@@ -9,18 +9,20 @@ using namespace std;
 
 class Array {
 public:
-  Array(int _size1, int _size2);
+  Array(const int &size1, const int &size2);
   Array(const Array &s);
   ~Array(){
-    delete [] pt;
+    delete [] _pt;
   }
   int GetSize(void);
+  int GetRowSize(void){return _size1;};
+  int GetColumnSize(void){return _size2;};
   double &Element(int i, int j);
   static int NumberOfArrays(void);
 private:
   int _elements, _size1, _size2;
   static int _total;
-  double *pt;
+  double *_pt;
 };
 
 inline int Array::GetSize(void)
@@ -38,6 +40,6 @@ inline double &Array::Element(int i, int j)
     cout << "Array index " << j << " out of bounds" << endl;
     exit (EXIT_FAILURE);
   }
-  return pt[(i - 1) * _size2 + (j - 1)]; //*(&pt[0] + (i - 1) * size2 + (j - 1))
+  return _pt[(i - 1) * _size2 + (j - 1)]; //*(&pt[0] + (i - 1) * size2 + (j - 1))
 }
 #endif //ARRAY_H

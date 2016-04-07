@@ -21,14 +21,24 @@ int main()
       x.Element(i,j) = i * 2 * j;
 
   // Retrieve some data:
-  for (int i = 1; i <= array_row; ++i){
-    for (int j = 1; j <= array_col; ++j){
+  for (int i = 1; i <= x.GetRowSize(); ++i){
+    for (int j = 1; j <= x.GetColumnSize(); ++j){
       cout << x.Element(i,j) << "\t";
     }
     cout << endl;
   }
 
-  /*
+  cout << endl;
+  Array y(x);
+   // Retrieve some data:
+  for (int i = 1; i <= y.GetRowSize(); ++i){
+    for (int j = 1; j <= y.GetColumnSize(); ++j){
+      cout << y.Element(i,j) << "\t";
+    }
+    cout << endl;
+  }
+  
+/*  
   // Define another object:
   array y(array_row, array_col);
 
@@ -44,7 +54,7 @@ int main()
 // Retrieve some data:
   for (int i = 1; i <= array_row; ++i)
     for (int j = 1; j <= array_col; ++j)
-      cout << p->element(i,j) << endl;
-*/
+      cout << p->element(i,j) << endl;*/
+
   return(EXIT_SUCCESS);
 }

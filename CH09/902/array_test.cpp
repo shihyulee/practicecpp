@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
 #include "array.hpp"
 using namespace std;
 
@@ -17,15 +18,29 @@ int main()
 
   // Store some data:
   for (int i = 1; i <= array_size; ++i)
-    x[i] = i * 25.0;
+    x(i) = i * 25.0;
 
   // Retrieve some data:
   for (int i = 1; i <= array_size; ++i)
-    cout << "x[" << i << "] = "<< x[i] << endl;
+    cout << "x(" << i << ") = "<< x(i) << endl;
 
   // Define another object:
-  Array y(array_size);
+  Array y(array_size); 
 
+  std::cout << std::endl;
+    
+  
+  Array z = x;
+  for (int i = 0; i < array_size; ++i)
+    cout << "z[" << i << "] = "<< z[i] << endl;
+   
+  std::cout << std::endl;
+  
+  z += x;
+  for (int i = 0; i < array_size; ++i)
+    cout << "z[" << i << "] = "<< z[i] << endl;
+  cout << sqrt( x * x )<< endl;
+  
   // Now repeat the above, using a pointer to an object:
   Array *p = &y;
 
@@ -37,11 +52,11 @@ int main()
 
   // Store some data:
   for (int i = 1; i <= array_size; ++i)
-    p->operator[](i) = i * 250.0;
+    (*p)(i) = i * 250.0;
 
   // Retrieve some data:
   for (int i = 1; i <= array_size; ++i)
-    cout << "y[" << i << "] = "<< p->operator[](i) << endl;
+    cout << "y(" << i << ") = "<< (*p)(i) << endl;
 
   return(EXIT_SUCCESS);
 }
