@@ -12,6 +12,7 @@ public:
   complex(void) { }
   complex(double r, double i);
   complex(const complex &z);
+  // Add implicit conversion
   operator double(){
     return _re;
   };
@@ -65,13 +66,15 @@ void print(const complex &z)
 
 int main()
 {
-  complex z1(1, 2), z2(3, 3), z3;
-  z3 = z1 + z2;
-  cout << "z1 + z2 = ";
-  print(z3);
+  // complex z1(1, 2), z2(3, 3), z3;
+  // z3 = z1 + z2;
+  // cout << "z1 + z2 = ";
+  // print(z3);
 
   complex a(1.1, 0);
-  cout << a + 1.0 << endl;
+  cout << "a = "<< endl;
+  print(a);
+  cout << "a + 1.0 = " << a + 1.0 << endl;
 
   return(EXIT_SUCCESS);
 }
