@@ -71,6 +71,8 @@ void Division(void)
 
 int main()
 {
+  
+  option* a; 
 
   const int top_menu_options = 2;
   const int operand_menu_options = 5;

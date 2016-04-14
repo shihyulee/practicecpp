@@ -4,6 +4,9 @@ using namespace std;
 
 class complex {
   friend complex operator+(const complex &u, const complex &v);
+  friend complex operator+(const double &u, const complex &v);
+  friend complex operator+(const complex &u, const double &v);
+  
   friend double Real(const complex &z);
   friend double Imag(const complex &z);
 public:
@@ -12,6 +15,8 @@ public:
   complex(void) { }
   complex(double r, double i);
   complex(const complex &z);
+  
+ 
   // Add implicit conversion
   operator double(){
     return _re;
@@ -26,6 +31,19 @@ inline complex operator+(const complex &u, const complex &v)
 {
   return complex(u._re + v._re, u._im + v._im);
 }
+
+
+inline complex operator+(const double &u, const complex &v)
+{
+  return complex(u + v._re,  v._im);
+}
+
+inline complex operator+(const complex &u, const double &v)
+{
+  return complex(v + u._re,  u._im);
+}
+
+
 
 inline double Real(const complex &z)
 {
@@ -71,10 +89,14 @@ int main()
   // cout << "z1 + z2 = ";
   // print(z3);
 
-  complex a(1.1, 0);
+  complex a(1.1, 2);
   cout << "a = "<< endl;
   print(a);
-  cout << "a + 1.0 = " << a + 1.0 << endl;
+  complex b =  ( a + 2.0 ) + ( 1.0  + a );
+  
+  print(b);
+  
+  //cout << "a + 1.0 = " << a + 1.0 << endl;
 
   return(EXIT_SUCCESS);
 }
