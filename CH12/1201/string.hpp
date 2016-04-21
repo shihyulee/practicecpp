@@ -16,7 +16,7 @@ public:
     _pt = NULL;
   }
   String(const String &s);
-  String(char *s);
+  String(char const *s);
   String &operator=(const String &s);
   char *char_array (void) const;
   int length(void) const { return _characters; }

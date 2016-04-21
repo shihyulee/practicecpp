@@ -43,3 +43,15 @@ void dlist::delete_head(void)
   _cursor = _head;
   delete pt;
 }
+
+// Add
+void SparseVector::SparseVector(const int &index, const double &value)
+{
+  _index = index;
+  _value = value;
+}
+
+double SparseVector::SparseVector(const SparseVector &s)
+{
+  return SparseVector(s._index, s._value);
+}

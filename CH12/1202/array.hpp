@@ -14,7 +14,7 @@ public:
   }
   array &operator=(const array &x);
   virtual double &operator[](int index);
-  virtual bool operator!=(const array &x, const array &y);
+  virtual bool operator!=(const array &x);
   int get_size(void);
 protected:
   int _n;
@@ -25,10 +25,9 @@ class checked_array : public array {
 public:
   checked_array(int size) : array(size) { }
   double &operator[](int index);
-  bool operator!=(const array &x, const array &y);
+  bool operator!=(const array &x);
 private:
   void check_bounds(int index);
-  void check_ToF(const array &x, const array &y);
 };
 
 // inline array class implementations:
@@ -43,9 +42,12 @@ inline double &array::operator[](int index)
   return _pt[index - 1];
 }
 
-inline bool array::operator!=(const array &x, const array &y)
+inline bool array::operator!=(const array &x)
 {
-  return !(&x == &y);
+  if (_pt == x._pt)
+    return true;
+  else
+    return false;
 }
 
 // inline checked_array class implementations:
@@ -56,9 +58,9 @@ inline double &checked_array::operator[](int index)
   return array::operator[](index);
 }
 
-inline bool checked_array::operator!=(const array &x, const array &y)
+inline bool checked_array::operator!=(const array &x)
 {
-  return array::operator!=(&x, &y);
+  return array::operator!=(x);
 }
 
 inline void checked_array::check_bounds(int index)

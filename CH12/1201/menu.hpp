@@ -6,7 +6,7 @@
 class option {
 public:
   option(const String &option_label) { _label = option_label; }
-  //virtual void activate(void) = 0; //pure virtual function
+  virtual void activate(void) = 0; //pure virtual function
   void print_label(void) { _label.print(); }
 private:
   String _label;

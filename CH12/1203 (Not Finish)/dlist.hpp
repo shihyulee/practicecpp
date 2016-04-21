@@ -33,11 +33,11 @@ private:
 
 class SparseVector : public dlist {
 public:
-  SparseVector(const int &index, const int &value);
+  SparseVector(const int &index, const double &value);
   SparseVector(const SparseVector &s);
-  friend double operator*(const SparseVector &r, const SparseVector &s);
 private:
-  node *_index, *_value;
+  int _index;
+  double _value;
 };
 
 inline node *dlist::forward(void)

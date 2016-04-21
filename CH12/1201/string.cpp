@@ -11,7 +11,7 @@ String::String(const String &s)
   memcpy(_pt, s._pt, _characters);
 }
 
-String::String(char *s)
+String::String(char const *s)
 {
   _characters = strlen(s);
   _pt = new char[_characters];

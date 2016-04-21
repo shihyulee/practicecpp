@@ -83,6 +83,17 @@ int main()
   else
     cout << "Arrays x and z have identical data." << endl << endl;
 
+
+/**** Check Start *******/
+    cout << (y != x) << endl;
+
+    checked_array t(n);
+    for (int i = 1; i <= n; ++i) {
+      t[i] = i * 2.0;
+    }
+    cout << (t != x) << endl;
+
+/****************
   // Find sum for z[i], going out of bounds. If you get the
   // correct result, try changing the third argument in sum
   // to something else greater than n:
@@ -90,6 +101,8 @@ int main()
 
 // Find sum for x[i], going out of bounds:
   cout << "The sum of the data in x is " << sum(x, 1, 2 * n) << " .\nTHe sum should be " << total <<"." << endl << endl;
+*****************/
+
 
   return(EXIT_SUCCESS);
 }
