@@ -1,4 +1,6 @@
 #include "left.hpp"
+#include <iostream>
+
 
 void left_zero::input(double set_data)
 {
@@ -13,4 +15,5 @@ void left_zero::input(double set_data)
   }
   // Calculate cursor position (0.5 ensures rounding):
   cursor = static_cast<int>((data * scale_length) / max_data + 0.5);
+  std::cout<<data<<" "<<max_data<<" "<<scale_length<<" "<<cursor<<std::endl;
 }
