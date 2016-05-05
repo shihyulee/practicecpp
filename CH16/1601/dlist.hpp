@@ -13,7 +13,7 @@ private:
   node<T> *_next, *_last;
 };
 
-template<class T>class dlist{
+template < class T > class dlist{
 public:
   dlist(void);
   virtual ~dlist();
@@ -24,6 +24,9 @@ public:
   void set_cursor_head(void);
   void set_cursor_tail(void);
   node<T> *cursor_position(void);
+  
+  void print_forward();
+  
 private:
   node<T> *_head, *_tail, *_cursor;
 };
@@ -99,4 +102,18 @@ template<class T> void dlist<T>::delete_head(void)
     _head->_last = 0;
   _cursor = _head;
   delete pt;
+}
+
+template<class T> void  dlist<T>::print_forward()
+{
+  node<T> *pt;
+  set_cursor_head();
+  cout << "forward list: ";
+  if((pt = forward()) != 0)
+    cout << pt->data;
+  else
+    cout << "empty";
+  while((pt = forward()) != 0)
+    cout << " -> " << pt->data;
+  cout << endl;
 }

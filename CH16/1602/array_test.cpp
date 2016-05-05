@@ -5,20 +5,15 @@
 #include "array.hpp"
 using namespace std;
 
-double sum(array<double> &a, int first_index, int last_index)
-{
-  double result = a[first_index];
-  for (int i = first_index +1; i <= last_index; ++i)
-    result += a[i];
-  return result;
-}
 
 int main()
 {
   const int n = 10;
 
+  typedef unsigned data_type;
+  
   // Define an object:
-  checked_array<double> x(n);
+  checked_array< data_type > x(n);
 
   // Access the array size:
   cout << "The array x has " << x.get_size() << " elements." << endl;
@@ -39,7 +34,7 @@ int main()
   cout << endl;
 
   // Define another object using copy constructor:
-  checked_array<double> y = x;
+  checked_array< data_type> y = x;
 
   // Check the array size:
   cout << "The array y has " << y.get_size() << " elements." << endl
@@ -59,7 +54,7 @@ int main()
 
   // Define another object with half the size but no bounds
   // checking;
-  array<double> z(n/2);
+  array< data_type > z(n/2);
 
   // Check the array size:
   cout << "The array z has " << z.get_size() << " elements" << endl << endl;
@@ -86,10 +81,10 @@ int main()
   // Find sum for z[i], going out of bounds. If you get the
   // correct result, try changing the third argument in sum
   // to something else greater than n:
-  cout << "The sum of the data in z is " << sum(z, 1, 2 * n) << " .\nTHe sum should be " << total <<"." << endl << endl;
+  cout << "The sum of the data in z is " << z.sum( 1, 2 * n) << " .\nTHe sum should be " << total <<"." << endl << endl;
 
 // Find sum for x[i], going out of bounds:
-  cout << "The sum of the data in x is " << sum(x, 1, 2 * n) << " .\nTHe sum should be " << total <<"." << endl << endl;
+  cout << "The sum of the data in x is " << x.sum( 1, 2 * n) << " .\nTHe sum should be " << total <<"." << endl << endl;
 
   return(EXIT_SUCCESS);
 }

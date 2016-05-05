@@ -13,6 +13,7 @@ public:
   }
   array &operator=(const array &x);
   virtual T &operator[](int index);
+  T sum(int first_index, int last_index);
   int get_size(void);
 protected:
   int _n;
@@ -49,7 +50,7 @@ template<class T> T &checked_array<T>::operator[](int index)
 
 template<class T> void checked_array<T>::check_bounds(int index)
 {
-  if (index < 1 || index > array<T>::_n){
+    if (index < 1 || index > this->_n){
     cout << "Array index " << index << " out of bounds" << endl;
     exit(EXIT_FAILURE);
   }
@@ -58,13 +59,13 @@ template<class T> void checked_array<T>::check_bounds(int index)
 template<class T> array<T>::array(int size)
 {
   _n = size;
-  _pt = new double[_n];
+  _pt = new T [_n];
 }
 
 template<class T> array<T>::array(const array &x)
 {
   _n = x._n;
-  _pt = new double[_n];
+  _pt = new T [_n];
   memcpy(_pt, x._pt, _n * sizeof(T));
 }
 
@@ -72,7 +73,16 @@ template<class T> array<T> &array<T>::operator=(const array &x)
 {
   delete _pt;
   _n = x._n;
-  _pt = new double[_n];
+  _pt = new T [_n];
   memcpy(_pt, x._pt, _n *sizeof(T));
   return *this;
 }
+
+template<class T> T array<T>::sum(int first_index, int last_index)
+{
+  T result = _pt[first_index];
+  for (int i = first_index +1; i <= last_index; ++i)
+    result += _pt[i];
+  return result;
+}
+
